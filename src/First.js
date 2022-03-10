@@ -23,15 +23,16 @@ export default function First({ setKeys }) {
 
   const validate = ({ pNum, qNum, eNum, nNum, zNum }) => {
     const errors = {};
-    if (!isNaN(qNum) && qNum !== "" && !isPrimeCheck(qNum)) {
-      errors.qNum = "First Number should be prime";
-    } else {
-      errors.qNum = "";
-    }
     if (!isNaN(pNum) && pNum !== "" && !isPrimeCheck(pNum)) {
-      errors.pNum = "Second Number should be prime";
+      errors.pNum = "First Number should be prime";
     } else {
       errors.pNum = "";
+    }
+
+    if (!isNaN(qNum) && qNum !== "" && !isPrimeCheck(qNum)) {
+      errors.qNum = "Second Number should be prime";
+    } else {
+      errors.qNum = "";
     }
 
     if (eNum > 0 && !isNaN(eNum) && eNum !== "") {
