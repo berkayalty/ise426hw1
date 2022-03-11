@@ -51,24 +51,14 @@ export default function First({ setKeys }) {
 
   const generateDNumber = ({ eNum, zNum, nNum }, setFieldValue) => {
     if (eNum > 0) {
-      const dateString = new Date().getTime().toString();
-      const lastNDigit = parseInt(
-        dateString.substring(dateString.length - 5, dateString.length)
-      );
-      let founded = false;
-      for (let i = lastNDigit; i > 0; i--) {
-        if ((eNum * i - 1) % zNum === 0 && i < zNum) {
-          console.log("İ-<", i);
-          founded = true;
+      for (let i = nNum - 1; i > 0; i--) {
+        if ((eNum * i - 1) % zNum === 0) {
           setFieldValue("dNum", i);
           setKeys({
             public: { eNum: eNum, nNum: nNum },
             private: { dNum: i, nNum: nNum },
           });
         }
-      }
-      if (!founded) {
-        generateDNumber();
       }
     }
   };
